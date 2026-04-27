@@ -10,6 +10,7 @@
 #include <zephyr/dt-bindings/gpio/gpio.h>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 #include "lpc845brk-pinctrl.dtsi"
+#include <zephyr/dt-bindings/adc/adc.h>
 
 / {
 	compatible = "nxp,lpc845-brk";
@@ -121,4 +122,22 @@
 	pinctrl-1 = <&gpio1_sleep>;
 	pinctrl-names = "default", "sleep";
 	status = "okay";
+};
+
+&adc {
+	pinctrl-0 = <&adc0_default>;
+	pinctrl-names = "default";
+	#address-cells = <1>;
+	#size-cells = <0>;
+	status = "okay";
+
+	channel@0 {
+		reg = <0>;
+		zephyr,gain = "ADC_GAIN_1";
+		zephyr,reference = "ADC_REF_INTERNAL";
+		zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+		zephyr,resolution = <12>;
+		zephyr,input-positive = <7>;
+		zephyr,vref-mv = <3300>;
+	};
 };

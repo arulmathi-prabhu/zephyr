@@ -15,6 +15,12 @@
 	 * The pinmux group is intentionally empty to satisfy pinctrl_apply_state().
 	 */
 
+	adc0_default: adc0_default {
+		group0 {
+			pinmux = <LPC84X_PINMUX_F(LPC84X_SWM_ADC_CHN0, P0_7)>;
+		};
+	};
+
 	gpio0_default: gpio0_default {
 		group0 {
 			pinmux = <LPC84X_PINMUX_F(LPC84X_SWM_SWCLK, P0_3)>,
